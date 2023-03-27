@@ -1,1 +1,3 @@
+# Don't worry about this file - it can be deleted if you want
+# It just tells Git which files it shouldn't upload to the Github repository.
 .DS_Store
