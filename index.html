@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- META tags that tell the browser what kind of content our website contains -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Link tags that add CSS stylesheet(s) and icons to our site -->
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles/styles.css">
+
+  <title>Snake</title>
+</head>
+
+<body>
+  <!-- The header section that will display the current score and start button -->
+  <header>
+    <h1>Snake</h1>
+    <div class="controls">
+      <p>Score: <span id="score">0</span></p>
+      <button id="start">START</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- The HTML canvas element that we will draw our game elements on -->
+    <canvas width="500" height="500"></canvas>
+  </main>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>
