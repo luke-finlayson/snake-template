@@ -29,8 +29,6 @@ In the folder named `styles` you’ll find a `styles.css` file. This will contai
 
 In the folder named `scripts` you’ll find a `main.js` file. This is where most of the action will be happening, and will contain all the game logic and functions. You’ll notice there is already some code in here that will help later on when you write the code for your snake.
 
-There are some other files you may find, such as `favicon.ico`. This is just a simple image file that the browser will use as the icon in the tab. If you’ve got a keen eye you’ll also notice a `.gitignore` file, this is a remnant of the project being hosted in a Git repository and can be ignored.
-
 
 ## The Page Layout
 Now that you’ve got everything setup and ready to go, we’ll start by putting together the basic layout of your site. This includes adding some HTML elements and using CSS to adjust the layout and visual style of those elements.
