@@ -127,11 +127,11 @@ Another object we need to get from the canvas is the canvas **context**. This co
 With the `context` we can now use a number of functions to draw shapes and other graphical elements onto our canvas. For this project we will just be focusing on drawing rectangles in various colours — but feel free to play around with drawing other types of shapes. You can even draw images onto a canvas. Learn more here: https://www.w3schools.com/html/html5_canvas.asp
 
 #### Drawing a rectangle
-As mentioned before, the `drawRect` function takes 4 parameters. The `x` and `y` coordinates of the top left corner of the rectangle, and the `width` and `height` of the rectangle. For example:
+As mentioned before, the `fillRect` function takes 4 parameters. The `x` and `y` coordinates of the top left corner of the rectangle, and the `width` and `height` of the rectangle. For example:
 
 ```
-// context.drawRect([x], [y], [width], [height]);
-context.drawRect(10, 10, 50, 80);
+// context.fillRect([x], [y], [width], [height]);
+context.fillRect(10, 10, 50, 80);
 ```
 
 The above code will draw a rectangle like this:
@@ -140,18 +140,18 @@ The above code will draw a rectangle like this:
 
 
 #### Setting the colour to use
-Rather than specifying the colour when you draw a shape — you instead set the colour to use when drawing before calling the `drawRect` function by setting the `fillStyle` property. For example:
+Rather than specifying the colour when you draw a shape — you instead set the colour to use when drawing before calling the `fillRect` function by setting the `fillStyle` property. For example:
 
 ```
 // Set the fill style to blue
 context.fillStyle = "blue";
 // Draw a rectangle - this rectangle will be blue
-context.drawRect(x, y, width, height);
+context.fillRect(x, y, width, height);
 
 // Now set the fill style to red
 context.fillStyle = "red";
 // Draw another rectangle - this rectangle will be blue
-context.drawRect(x2, y2, width2, height2);
+context.fillRect(x2, y2, width2, height2);
 ```
 
 You can also use hex colour codes to use even more colours than the default named ones - you can use a tool like https://g.co/kgs/qthJQr to pick out a colour and get its hex code.
@@ -177,7 +177,7 @@ This can be seen in action in the below image. Here we have chosen a grid resolu
 
 Note how the position of the snake is centred on its top left corner. This is because of how drawing rectangles on canvases work — you define the coordinates of that top left corner and as well as a width and height.
 
-e.g: `context.drawRect(x, y, width, height);`
+e.g: `context.fillRect(x, y, width, height);`
 
 In your `main.js` define a grid square size to use. This can just be a `const` that has a number value. e.g:
 
@@ -195,14 +195,14 @@ let xPos = x * resolution;
 let yPos = y * resolution;
 
 /* 
- * Now we use xPos and yPos when calling drawRect.
+ * Now we use xPos and yPos when calling fillRect.
  *
  * We can also use our resolution value again as the
  * width and height to make the rectangle take up one
  * grid square.
  */
 context.fillStyle = "green";
-context.drawRect(xPos, yPos, resolution, resolution);
+context.fillRect(xPos, yPos, resolution, resolution);
 ```
 
 
@@ -255,7 +255,7 @@ this.body.forEach((square) => {
 	let x = square.x * resolution;
 	let y = square.y * resolution;
 
-	context.drawRect();
+	context.fillRect();
 });
 ```
 
@@ -278,7 +278,7 @@ class Snake {
 			let x = square.x * resolution;
 			let y = square.y * resolution;
 
-			context.drawRect();
+			context.fillRect();
 		});
 	}
 	
