@@ -10,6 +10,7 @@ const Direction = {
 // Here's a template for our snake class
 class Snake {
   constructor() {
+    // Setup the intial state of the snake
   }
 
   grow() {
