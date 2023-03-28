@@ -363,7 +363,7 @@ Now that we can move the snake one square, we want to continuously call that `up
 
 We can accomplish this using the built-in `setInterval()` function. This function takes two parameters, a function to repeatably call, and a time in milliseconds that will be delay between each call of the given function.
 
-Before we use `setInterval()` though, we will need to write a function **outside** of our `Snake` class that will call the snakes `update` function, wipe any previous shapes from the canvas and redraw using the snakes `draw` function. For example we can make another function called `update`:
+Before we use `setInterval()` though, we will need to write a function *outside* of our `Snake` class that will call the snakes `update` function, wipe any previous shapes from the canvas and redraw using the snakes `draw` function. For example we can make another function called `update`:
 
 ```
 const update = () => {
@@ -379,7 +379,7 @@ const update = () => {
 }
 ```
 
-Remove the previous lines where you update and draw the snake - but leave the one where you create the snake and add a new `update` function **below** your `Snake` class that will update and redraw the snake.
+Remove the previous lines where you update and draw the snake - but leave the one where you create the snake and add a new `update` function *below* your `Snake` class that will update and redraw the snake.
 
 Your `main.js` should now look something like this:
 
@@ -439,7 +439,7 @@ document.addEventListener('keydown', (event) => {
 });
 ```
 
-Setup this event listener somewhere in your code — just make sure it’s **outside** of your `Snake` class.
+Setup this event listener somewhere in your code — just make sure it’s *outside* of your `Snake` class.
 
 Reload the page and you should now be able to control the snake using the arrow keys!
 
@@ -462,6 +462,8 @@ Modify your `switch` statement to include these direction checks for all four di
 Reload your website and make sure you can’t suddenly turn in the other direction.
 
 ## Collisions
+
+#### Walls
 Now we can control our snake to prevent it from going off the page, but we want to go further. If the snake hits the edge of the canvas, we want the game to end.
 
 To do this, we can add a check after every `snake.update()` to check to see if the head of the snake has gone off the edges of the canvas.
@@ -520,13 +522,47 @@ const update = () => {
 }
 ```
 
+Now reload your website and test to make sure that when the snake hits any of the ‘walls’ the game ends and the snake is no longer controllable.
 
+#### Snake
+We also want to end the game if the snake collides with itself, like if the head of the snake turned around and bumped into its body.
+
+To do this we can another piece of code in our `checkCollision` function that will loop through every square in the snakes body — except the head — and check to see if the current square has the same coordinates as the head square.
+
+<img src="outline/Screenshot 2023-03-28 at 6.27.02 PM.png" width="500" />
+
+For example we can add this to our `checkCollision` function:
+
+```
+// Get the coordinates of the snakes head
+let x = this.body[0].x;
+let y = this.body[0].y;
+
+for (int i = 4; i < this.body.length; i++) {
+	let square = this.body[i];
+
+	// If the coordinates are the same
+	if (square.x == x && square.y == y) {
+		// There has been a collision
+		return true;
+	}
+}
+```
+
+Note that we skip the first 4 elements when looping through the snakes body — this is because the snake needs to be at least 5 units long to be able to collide with itself, so there is no point looking for a collision with the first 4.
+
+Extend your `checkCollision` function to check if the snake has collided with itself.
+
+If you want to test snake collisions, you will need to create your snake with at least 5 squares, otherwise you will not be able to wrap around and collide with yourself.
 
 ## Spawn food for the snake to eat
+TBA
 
 ## Add functionality to the start button
+TBA
 
 ## Bonus Challenges
+For now, until the rest of the outline has been written — feel free to go ahead and try to get those last two sections working.
 
 
 # A Basic Overview of Website Development
