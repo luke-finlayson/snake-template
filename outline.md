@@ -1,5 +1,4 @@
 # Snake Game
-![](outline/Screenshot%202023-03-28%20at%201.34.15%20PM.png)
 
 The Snake game is a classic arcade game that has been enjoyed by players for decades. In this game, the player controls a snake that moves around the game board, eating food and growing longer. 
 
@@ -7,7 +6,9 @@ The goal of the game is to eat as much food as possible without running into the
 
 In this project, we will design and build a website that allows users to play the Snake game. We will be using a combination of HTML, CSS and JavaScript to design the game board, snake, food and implement the game logic.
 
-Hopefully by the end of this project you should have something that looks similar to the above game.
+Hopefully by the end of this project you should have something that looks similar to the below game.
+
+<img src="outline/Screenshot%202023-03-28%20at%201.34.15%20PM.png" width="250" />
 
 
 # Setting Up
@@ -44,7 +45,7 @@ Try aiming for a layout similar to the one below (which you’ll notice is the s
 
 You can use `display: flex` in your CSS rules for the section containers (represented by `<header>` and `<div …>` in this image. This will sort the child elements using flex box, which is a powerful layout format that lets you easily align items how you want using the rules `align-items` and `justify-content`. Have a look at https://css-tricks.com/snippets/css/a-guide-to-flexbox/ for a great guide on how to use flexbox CSS rules.
 
-![](outline/Screenshot%202023-03-28%20at%201.24.57%20AM.png)
+<img src="outline/Screenshot%202023-03-28%20at%201.24.57%20AM.png" width=600 />
 
 One way you could achieve the above layout in the `<header>` would be with the following CSS rule:
 ```
@@ -70,7 +71,7 @@ When we draw shapes onto this canvas, we specify their position using coordinate
 
 This can make things a little unintuitive if you’re used to graphs in maths, however hopefully the below image helps. Essentially, increasing the `y` coordinate moves the point further down the canvas — instead of up.
 
-![](outline/Screenshot%202023-03-28%20at%201.50.53%20AM.png)
+<img src="outline/Screenshot%202023-03-28%20at%201.50.53%20AM.png" width="600" />
 
 
 ### Drawing onto a Canvas
@@ -99,7 +100,7 @@ context.drawRect(10, 10, 50, 80);
 
 The above code will draw a rectangle like this:
 
-![](outline/Screenshot%202023-03-28%20at%201.28.25%20PM.png)
+<img src="outline/Screenshot%202023-03-28%20at%201.28.25%20PM.png" width="500" />
 
 
 #### Setting the colour to use
@@ -136,7 +137,7 @@ That sounds complicated, but basically we define the size of a grid square in pi
 
 This can be seen in action in the below image. Here we have chosen a grid resolution of 16x16. This means that each grid square will need to be 31.25px wide and 31.25px high. Our snake can then have a position like **(7, 7)** and a width of one grid square. 
 
-![](outline/Screenshot%202023-03-28%20at%202.11.32%20AM.png)
+<img src="outline/Screenshot%202023-03-28%20at%202.11.32%20AM.png" width="600" />
 
 Note how the position of the snake is centred on its top left corner. This is because of how drawing rectangles on canvases work — you define the coordinates of that top left corner and as well as a width and height.
 
@@ -184,7 +185,7 @@ We will also include a constructor that will setup the initial direction and sna
 
 While our snake could be drawn as one big rectangle, this gets complicated when our snake start to turn corners and take on different shapes. Instead, we will represent our snake as a line of squares.
 
-![](outline/Screenshot%202023-03-28%20at%201.46.21%20PM.png)
+<img src="outline/Screenshot%202023-03-28%20at%201.46.21%20PM.png" width="550" />
 
 This way each square has its own unique position, and can be placed anywhere. (Although we want to make sure that our snake stays in one piece).
 
@@ -270,19 +271,19 @@ For this snake game, we want the tail of the snake to follow the path laid out b
 
 An easy way to accomplish this is to set the position of each square to the position of the one in front of it. You can see this in action in the below image:
 
-![](outline/Screenshot%202023-03-28%20at%202.30.31%20PM.png)
+<img src="outline/Screenshot%202023-03-28%20at%202.30.31%20PM.png" width="500" />
 
 After the update function, you can see that square **3** is now in the same position that was occupied by square **2**.
 
 This works around corners too, since we store the squares in an array which is just one line of elements:
 
-![](outline/Screenshot%202023-03-28%20at%202.33.21%20PM.png)
+<img src="outline/Screenshot%202023-03-28%20at%202.33.21%20PM.png" width="550" />
 
 We keep the head of the snake as the first element in the array, and the tail at the end of the array. We do this so that we can easily access the head with `this.body[0]`. This also makes adding squares to the snake easy, since the `.push()` function adds elements to the end of an array (i.e. it will add a square to the tail of the array).
 
 Setting the position of each square to the one in front of it works perfectly for every square except the head of the snake — as it doesn’t have any square in front of it. Instead — we check which direction the snake is travelling in, and increase or decrease the head squares position according to that direction.
 
-![](outline/Screenshot%202023-03-28%20at%202.42.42%20PM.png)
+<img src="outline/Screenshot%202023-03-28%20at%202.42.42%20PM.png" width="600" />
 
 To be able to do this we will need another property in our `Snake` class to store the current direction. You’ll see that we already have an object in our `main.js` that contains all the possible directions. We can use this object like this to choose a direction:
 
@@ -573,7 +574,7 @@ p {
 
 And this is the result: 
 
-![](outline/Screenshot%202023-03-27%20at%2011.23.25%20PM.png)
+<img src="outline/Screenshot%202023-03-27%20at%2011.23.25%20PM.png" width="200" />
 
 You can also declare rules for a particular class. You assign classes to HTML elements through their `class` attribute:
 
