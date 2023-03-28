@@ -10,7 +10,6 @@ const Direction = {
 // Here's a template for our snake class
 class Snake {
   constructor() {
-    // Setup the initial direction and body array here
   }
 
   grow() {
@@ -18,23 +17,18 @@ class Snake {
   }
 
   draw() {
-    // Use the canvas context to draw the snake here
+    // Draw the snake's body on the canvas
   }
 
   update() {
-    // Move the snake forwards one position
+    // Move the snake forwards one square
   }
 
   checkCollision() {
-    // Check if the snake has hit a wall
+    // Check to see if the snake has collided with a wall
 
-    // Check if the snake has hit itself
+    // Check to see if the snake has collided with itself
 
-    // Check if the snake has eaten some food
-  }
-
-  setDirection(direction) {
-    // Change the snakes direction.
+    // Check to see if the snake has eaten some food
   }
 }
-c

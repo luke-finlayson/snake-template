@@ -1,10 +1,4 @@
-/* 
-Here we are importing some custom fonts to use from fonts.google.com 
-You can use this custom font by using 
-[rule] { 
-  font-family: 'Alkatra', sans-serif; 
-}
-*/
+/* Here we are importing some custom fonts to use from fonts.google.com */
 @import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@500;700&display=swap');
 
 /* HTML elements have some default styling 
