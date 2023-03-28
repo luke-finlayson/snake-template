@@ -39,6 +39,44 @@ We will also need a button that lets users start and restart the game, along wit
 
 Open the `index.html` file and replace the comment `<!— Page elements go here -->`  with a header section that contains at least a text element to display the current score, and button that will start the game. Feel free to add more elements, like headers and labels etc…
 
+An example of what your HTML could look like is below:
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- META tags that tell the browser what kind of content our website contains -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Link tags that add CSS stylesheet(s) and icons to our site -->
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles/styles.css">
+
+  <title>Snake</title>
+</head>
+
+<body>
+  <!-- The header section that will display the current score and start button -->
+  <header>
+    <h1>Snake</h1>
+    <div class="controls">
+      <p>Score: <span id="score">0</span></p>
+      <button id="start">START</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- The HTML canvas element that we will draw our game elements on -->
+    <canvas width="500" height="500"></canvas>
+  </main>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>
+```
+
 Try aiming for a layout similar to the one below (which you’ll notice is the same layout as what was used in the exemplar).
 
 You can use `display: flex` in your CSS rules for the section containers (represented by `<header>` and `<div …>` in this image. This will sort the child elements using flex box, which is a powerful layout format that lets you easily align items how you want using the rules `align-items` and `justify-content`. Have a look at https://css-tricks.com/snippets/css/a-guide-to-flexbox/ for a great guide on how to use flexbox CSS rules.
