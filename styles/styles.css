@@ -1,6 +1,30 @@
 /* Here we are importing some custom fonts to use from fonts.google.com */
 @import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@500;700&display=swap');
 
+.background {
+  background-color: white;
+}
+
+.secondaryColor {
+  background-color: #9ee8a6;
+}
+
+.primaryColor {
+  background-color: #58ca64;
+}
+
+.textColor {
+  color: #245e2a;
+}
+
+.buttonTextColor {
+  color: white;
+}
+
+.disabled {
+  color: grey;
+}
+
 /* HTML elements have some default styling 
 - here we remove the default margin and padding from some of our elements
   so that we can make the website take up the whole page
@@ -10,4 +34,60 @@ html, body, h1, p {
   padding: 0;
 }
 
-/* Add your CSS styles here */
+header {
+  display: flex;
+  width: auto;
+  padding: 0 30px;
+  align-items: center;
+  justify-content: space-between;
+  height: 10vh;
+  font-family: 'Alkatra', sans-serif;
+}
+
+.controls p {
+  font-size: 1.5em;
+}
+
+#score {
+  font-weight: bold;
+}
+
+.controls {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+#start {
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2em;
+  padding: 6px 30px;
+  transition: 0.2s;
+  font-weight: 700;
+  font-family: 'Alkatra', sans-serif;
+}
+
+#start:hover {
+  padding: 8px 32px;
+  cursor: pointer;
+  transform: rotate(-3deg);
+}
+
+main {
+  width: auto;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #9ee8a6;
+  border-radius: 50px 50px 0 0;
+}
+
+body {
+  height: 100vh;
+}
+
+canvas {
+  border-radius: 30px;
+}
