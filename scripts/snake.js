@@ -6,30 +6,16 @@ class Snake {
      */
 
     // Set the initial snake direction, i.e. this.direction = Direction.Left
-    this.body = [{ x: 5, y: 1 }];
-      
-      this.direction = Direction.Right;
   }
 
   grow () {
     // Add another square to the end of the snake 
-    this.body.push({
-      x: this.body[-1]
-    });
   }
 
   draw() {
     // Set the fill style to the snakeColor
 
     // Loop through the snakes body, using fillRect to draw each square on the canvas
-    context.fillStyle = snakeColor;
-
-    this.body.forEach(square => {
-      let x = square.x * resolution;
-      let y = square.y * resolution;
-
-      context.fillRect(x, y, resolution, resolution);
-    });
   }
 
   move() {
@@ -38,24 +24,6 @@ class Snake {
      */
 
     // Move the 0th element of the snakes body (the head) depending on the direction of the snake
-    for (let i = this.body.length - 1; i > 0; i--) {
-      this.body[i] = { ...this.body[i - 1] };
-    }
-
-    switch(this.direction) {
-      case Direction.Up:
-        this.body[0].y--;
-        break;
-      case Direction.Down:
-        this.body[0].y++;
-        break;
-      case Direction.Left:
-        this.body[0].x--;
-        break;
-      case Direction.Right:
-        this.body[0].x++;
-        break;
-    }
   }
 
   checkCollision() {
