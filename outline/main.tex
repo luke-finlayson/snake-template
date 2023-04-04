@@ -1,0 +1,239 @@
+\documentclass{article}
+
+\begin{document}
+  \section{Introduction}
+  If you look in your \textbf{vscode} tab, you will find three main files, \textit{index.html},
+  \textit{styles.css}, \textit{snake.js} and \textit{main.js}. For this project, we will be 
+  focussing on the \textbf{snake.js} file. \\
+
+  \noindent If you open up the \textbf{snake.js} file, you will find a whole bunch of code
+  already written. This is the skeleton of the code that will make the snake in the snake
+  game work. The snake is represented as a class, which is a programming feature that lets
+  us create things, known as objects. A class contains functions that let us interact with
+  our objects (in this case, our snake). \\
+
+  \noindent In the \textbf{snake.js} file you will find a class with a number of functions.
+  A function looks like this:
+
+  \begin{verbatim}
+    myFunction() {
+      let a = 2;
+      let b = 3;
+
+      return a + b;
+    }
+  \end{verbatim}
+
+  \noindent There are five main functions that make up our \textbf{Snake}:
+  \begin{itemize}
+    \item \textbf{constructor()}: This is a function that gets run when we create our snake
+    \item \textbf{move()}: This function will move our snake forwards one square
+    \item \textbf{grow()}: This function will increase the size of our snake when it eats some food
+    \item \textbf{draw()}: This function gets called to draw our snake onto our website canvas.
+    \item \textbf{checkCollision()}: This function has been written for you, and checks to see 
+    if our snake has collided with anything, like food, walls, etc...
+  \end{itemize}
+
+  \noindent In this project we will be adding code to create, move and grow our snake. this
+  will involve writing code for the \textbf{constructor()}, \textbf{move()}, \textbf{grow()}
+  and \textbf{grow()} functions.
+
+  \pagebreak
+  \section{Creating the Snake}
+  Open up the \textbf{snake.js} file and find the \textbf{constructor()} function. Here we
+  will create the snakes body, and setup its initial direction. \\
+
+  \noindent Our snake will be made up of a line of 1x1 squares. We will create the snakes body by
+  declaring a list of coordinates. Each coordinate will represent one of the squares of 
+  the snakes body. We can create a snake with one square in its body like so:
+
+  \begin{verbatim}
+    constructor() {
+      this.body = [ { x: 1, y: 1 } ];
+    }
+  \end{verbatim}
+
+  \noindent This will place the head of our snake at coordinates \textbf{(1, 1)}. \\
+
+  \noindent We also need to specify the snakes initial direction to travel in. There are 
+  four possible directions our snake could move in, \textbf{Up}, \textbf{Down}, \textbf{Left} 
+  and \textbf{Right}. We start our snake off by moving right like so:
+
+  \begin{verbatim}
+    constructor() {
+      ...
+
+      this.direction = Direction.Right;
+    }
+  \end{verbatim}
+
+  \noindent Add the code for to create your snakes body and initial direction to the
+  \textbf{constructor()} function. You constructor should now look something like this:
+
+  \begin{verbatim}
+    constructor() {
+      this.body = [{ x: 1, y: 1 }];
+      this.direction = Direction.Right;
+    }
+  \end{verbatim}
+
+  \pagebreak
+  \section{Drawing the Snake}
+  If you refresh the website and press the start button, you will see... nothing. 
+  That's because while our snake has been created now, we aren't \textbf{drawing} it onto
+  our website. \\
+
+  \noindent We can draw shapes onto our website using the \textbf{context} variable. Here's
+  an example of drawing a green square onto the website's canvas:
+
+  \begin{verbatim}
+    context.fillStyle = "green";
+    context.fillRect(x, y, width, height);
+  \end{verbatim}
+
+  \noindent To draw our snake onto the website, we will be adding code to the \textbf{draw()}
+  function. You can find this in the Snake class in the \textbf{snake.js} file. To start, we 
+  first need to specify what colour we want to draw with. For now we will just use the colour 
+  that has been setup: \textbf{snakeColor}.
+
+  \begin{verbatim}
+    draw() {
+      context.fillStyle = snakeColor;
+    }
+  \end{verbatim}
+
+  \noindent Remember the list of square(s) we created before that make up the snakes body? We 
+  now need to loop through each of these square and draw each one using \textbf{context}. We
+  can do this using a \textbf{forEach} loop like this: \\
+
+  \begin{verbatim}
+    draw() {
+      ...
+
+      this.body.forEach(square => {
+        let x = square.x * resolution;
+        let y = square.y * resolution;
+
+        context.fillRect(x, y, resolution, resolution);
+      });
+    }
+  \end{verbatim}
+
+  \noindent Note that we do a little maths when determining the \textbf{x} and \textbf{y} coordinates
+  of each square since our game grid and the website canvas grid use different coordinates.
+  \textbf{resolution} is the width of one grid square, hence we also use it as the width and
+  height of each square.
+
+  \noindent Add the above code to set the colour of/draw each square onto our website. Your
+  \textbf{draw()} function should now look like this: \\
+
+  \begin{verbatim}
+    draw() {
+      context.fillStyle = snakeColor;
+
+      this.body.forEach(square => {
+        let x = square.x * resolution;
+        let y = square.y * resolution;
+
+        context.fillRect(x, y, resolution, resolution);
+      });
+    }
+  \end{verbatim}
+
+  \noindent If you refresh the game website and press start, you should now see at least 2
+  white squares appear on the game board. One of these will be your snake, and the other will
+  be the piece of food that has been spawned now that a snake exists.
+
+  \pagebreak
+  \section{Moving the Snake}
+  Now that we can see our snake, we want it to be able to move around the board. We will do 
+  this using the \textbf{move()} function. Open your \textbf{snake.js} file and look for the
+  \textbf{move()} function. Every time this function gets run, we want to move our snake forwards
+  one square. \\\\
+  We move each square individually into the position of the square in front of it, so that the
+  snake slithers along the path laid out by the head. To accomplish this, we need to loop through
+  the squares again --- this time starting at the back and ending at the head. This is because
+  if we start updating the position of the squares in the front, then the squares behind them
+  won't know where to move to. Add a \textbf{for} loop to move the squares:
+
+  \begin{verbatim}
+    move() {
+      for (let i = this.body.length - 1; i > 0; i--) {
+        this.body[i] = { ...this.body[i - 1] };
+      }
+    }
+  \end{verbatim}
+
+  \noindent Now we want to move the head of the snake one square in the direction the snake
+  is travelling in (remember the direction we specified in the \textbf{constructor()}?). In 
+  your \textbf{move()} function, below the \textbf{for} loop, add code to check which
+  direction the snake is travelling in and move the position of the first square forwards in
+  that direction:
+
+  \begin{verbatim}
+    move() {
+      ...
+
+      switch(this.direction) {
+        case Direction.Up:
+          this.body[0].y--;
+          break;
+        case Direction.Down:
+          this.body[0].y++;
+          break;
+        case Direction.Left:
+          this.body[0].x--;
+          break;
+        case Direction.Right:
+          this.body[0].x++;
+          break;
+      }
+    }
+  \end{verbatim}
+
+  \noindent Add the code to move the snake to your \textbf{move()} function in your 
+  \textbf{snake.js} file. The \textbf{move()} function should now look something like this:
+
+  \begin{verbatim}
+    move() {
+      for (let i = this.body.length - 1; i > 0; i--) {
+        this.body[i] = { ...this.body[i - 1] };
+      }
+
+      switch(this.direction) {
+        case Direction.Up:
+          this.body[0].y--;
+          break;
+        case Direction.Down:
+          this.body[0].y++;
+          break;
+        case Direction.Left:
+          this.body[0].x--;
+          break;
+        case Direction.Right:
+          this.body[0].x++;
+          break;
+      }
+    }
+  \end{verbatim}
+
+  \noindent Reload the website and you should find that your snake will now move across the game
+  board! You should find that you can also use the \textbf{arrow keys} to control the direction
+  of the snake.
+
+  \pagebreak
+  \section{Growing the Snake}
+  You may notice that our snake doesn't grow when it eats some food. That's because we need
+  to add code to our \textbf{grow()} function. All we need to do now is add another square to
+  the end of our snakes body in the same position as the current tail of the snake. We can
+  add squares to the end of our snake with the \textbf{.push()} function like so:
+
+  \begin{verbatim}
+    grow() {
+      this.body.push({
+        ...this.body[-1]
+      });
+    }
+  \end{verbatim}
+
+\end{document}
